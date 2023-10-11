@@ -30,6 +30,7 @@ const User = types
 		login(user: Info) {
 			self.info = { ...self.info, ...user };
 			localStorage.userInfo = JSON.stringify(self.info);
+			location.replace('/');
 		},
 		logout() {
 			socket.socket?.close()

@@ -3,6 +3,7 @@ import { Toast, List, Modal, Button } from 'antd-mobile';
 import { onTouchStart, router_observer, socket } from '@/utils';
 import UserAvatar from 'react-user-avatar';
 import { user } from '@/models';
+import { useNavigate } from 'umi';
 type Info = { name: string; intro: string; id: number | string };
 export default router_observer(function InfoList(props: {
   lists: any[];
@@ -13,7 +14,7 @@ export default router_observer(function InfoList(props: {
   const { lists = [], title, clickType } = props;
   const [visible, visibleSet] = useState(false);
   const [info, infoSet] = useState({ name: '', intro: '', id: '' } as Info);
-  const noData = <div style={{ padding: '4px 15px', background: '#f5f5f9' }}>暂无</div>;
+  const noData = <div style={{ padding: '4px 15px', background: '#f5f5f9', 'textAlign': 'center' }}>暂无</div>;
 
   function onListClick(info: Info) {
     infoSet(info);
@@ -32,10 +33,8 @@ export default router_observer(function InfoList(props: {
 
   // 开始聊天
   function goChat(info: Info) {
-    props.history.push({
-      pathname: '/chat',
-      query: { id: info.id },
-    });
+    const navigate = useNavigate();
+    navigate(`/chat?id=${info.id}`);
   }
 
   return (
@@ -43,11 +42,11 @@ export default router_observer(function InfoList(props: {
       <List renderHeader={title}>
         {lists?.length
           ? lists.map((a: any) => {
-            let msg=''
+            let msg = ''
             try {
-              msg=a?.msgs[a?.msgs?.length - 1]?.msg||''
-            } catch (error) {}           
-             return (
+              msg = a?.msgs[a?.msgs?.length - 1]?.msg || ''
+            } catch (error) { }
+            return (
               <List.Item
                 key={JSON.stringify(a)}
                 onClick={() => onListClick(a)}

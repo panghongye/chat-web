@@ -23,7 +23,7 @@ class Index extends React.Component {
       <div className="p-index">
         <WhiteSpace size="sm" />
         <WingBlank className={css['header-wrapper']} size="lg">
-          <UserAvatar size="36" name={user?.info?.name +'_'} style={{ color: '#FFF' }} />
+          <UserAvatar size="36" name={user?.info?.name + '_'} style={{ color: '#FFF' }} />
           <SearchBar
             style={{ width: '70%' }}
             placeholder="用户/群组"
@@ -49,8 +49,8 @@ class Index extends React.Component {
             <InfoList lists={groups} title="所有群组" clickType="getGroupInfo" />
           </>
         ) : (
-            <InfoList lists={user.groups} clickType="chat" />
-          )}
+          <InfoList lists={user.groups} clickType="chat" />
+        )}
         <Modal
           visible={this.state.modal1}
           afterClose={() => this.setState({ name: '', intro: '' })}

@@ -1,13 +1,15 @@
-import * as React from 'react'
-import TabBar from '@/components/tabBar';
-import { Link, Outlet } from 'umi';
+import { user } from '../models';
+import TabBar from '../components/tabBar';
+import { Outlet, useNavigate } from 'umi';
 import 'antd-mobile/dist/antd-mobile.css';
-export default function Layout(props) {
+export default function Layout() {
+  const navigate = useNavigate();
   const pathname = location.pathname;
+  if (!user?.info?.name && pathname != '/login') return navigate("/login", { replace: true });
   return (
-    <Outlet>
-      {props.children}
+    <>
+      <Outlet />
       {(pathname === '/' || pathname === '/setting') && <TabBar />}
-    </Outlet>
+    </>
   );
 }

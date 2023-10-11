@@ -5,11 +5,9 @@ import UserAvatar from 'react-user-avatar';
 import css from './index.less';
 import { Button } from 'antd';
 import React, { } from 'react';
-
 class Chat extends React.Component<any> {
   state = { msg: '' };
-  id = this.props.location.query.id
-
+  id = location.search.split('?')?.[1]?.split('=')?.[1] || ''
   render() {
     const { props } = this;
     const group = user.groups.find((group) => {
@@ -21,15 +19,15 @@ class Chat extends React.Component<any> {
         <NavBar
           mode="light"
           icon={<Icon type="left" />}
-          onLeftClick={props.history.goBack}
+          onLeftClick={() => history.back()}
           rightContent={[<Icon key="1" type="ellipsis" />]}
         >
           {group?.name}
         </NavBar>
         <div id='chat-msgs-div' className={css.msgs} >{
           msgs.map((msg: any) => {
-            return <div key={msg.id} style={{display:'flex',marginBottom:10}}>
-              <UserAvatar size="36" name={msg.userName+'_'} style={{ color: '#FFF'}} />
+            return <div key={msg.id} style={{ display: 'flex', marginBottom: 10 }}>
+              <UserAvatar size="36" name={msg.userName + '_'} style={{ color: '#FFF' }} />
               <div className={css.d1} >{msg.msg}</div>
             </div>
           })
