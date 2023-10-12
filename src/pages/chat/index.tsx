@@ -20,7 +20,8 @@ class Chat extends React.Component<any> {
           mode="light"
           icon={<Icon type="left" />}
           onLeftClick={() => history.back()}
-          rightContent={[<Icon key="1" type="ellipsis" />]}
+          // TODO 删除好友
+          rightContent={[<Icon key="1" type="ellipsis" style={{ cursor: 'pointer' }} onClick={() => console.log(888)} />]}
         >
           {group?.name}
         </NavBar>

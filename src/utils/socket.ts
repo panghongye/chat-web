@@ -8,7 +8,7 @@ class Socket {
 
 	init = () => {
 		if (!user.info.token || this.socket?.connected) return
-		const socket = this.socket = io('127.0.0.1:3000', {
+		const socket = this.socket = io('ws://127.0.0.1:3000', {
 			query: { token: user.info.token }
 		});
 		socket.on('connect', () => {

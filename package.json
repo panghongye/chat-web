@@ -19,7 +19,8 @@
     "mst-middlewares": "^5.2.0",
     "react-user-avatar": "^1.10.0",
     "remotedev": "^0.2.9",
-    "socket.io-client": "^4.7.2",
+    "socket.io-client": "^2.3.0",
+
     "umi": "^4.0.83"
   },
   "devDependencies": {
