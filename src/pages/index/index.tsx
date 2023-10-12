@@ -5,7 +5,6 @@ import UserAvatar from 'react-user-avatar';
 import { user } from '../../models';
 import InfoList from '../../components/InfoList';
 import { onTouchStart, router_observer, socket } from '@/utils';
-
 class Index extends React.Component {
   state = {
     modal1: false,
@@ -116,7 +115,7 @@ class Index extends React.Component {
         Toast.hide();
         console.log('创建成功', group);
         //todo
-        location.reload()
+        history.reload()
         this.onClose('modal1')();
       })
       .catch(e => Toast.hide());

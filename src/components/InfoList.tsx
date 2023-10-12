@@ -3,7 +3,7 @@ import { Toast, List, Modal, Button } from 'antd-mobile';
 import { onTouchStart, router_observer, socket } from '@/utils';
 import UserAvatar from 'react-user-avatar';
 import { user } from '@/models';
-import { useNavigate } from 'umi';
+import { history } from 'umi';
 type Info = { name: string; intro: string; id: number | string };
 export default router_observer(function InfoList(props: {
   lists: any[];
@@ -33,8 +33,7 @@ export default router_observer(function InfoList(props: {
 
   // 开始聊天
   function goChat(info: Info) {
-    const navigate = useNavigate();
-    navigate(`/chat?id=${info.id}`);
+    history.push(`/chat?id=${info.id}`);
   }
 
   return (

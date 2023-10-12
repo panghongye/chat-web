@@ -1,5 +1,6 @@
 import { getSnapshot, destroy, onSnapshot, types } from 'mobx-state-tree';
 import { socket } from '../utils';
+import { history } from 'umi';
 type Info = { name?: string; token?: string; id?: number };
 
 const User = types
@@ -30,7 +31,7 @@ const User = types
 		login(user: Info) {
 			self.info = { ...self.info, ...user };
 			localStorage.userInfo = JSON.stringify(self.info);
-			location.replace('/');
+			history.replace('/');
 		},
 		logout() {
 			socket.socket?.close()
