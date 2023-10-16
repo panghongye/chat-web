@@ -20,6 +20,7 @@ export default function Login() {
         { name, password },
         { loadingText: '请求中...' },
       );
+      // 0成功 1失败
       if (data.code !== 0) return;
       if (type) {
         user.login(data.data);
