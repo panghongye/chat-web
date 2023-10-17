@@ -6,7 +6,7 @@ interface AxiosOption extends AxiosRequestConfig {
 }
 
 async function axios(url: string, method?: Method, data?: any, option?: AxiosOption) {
-  url = '//127.0.0.1:3000/api/v1' + url;
+  url = '//localhost:3000/api/v1' + url;
   const loadingText = option && option.loadingText;
   if (loadingText) Toast.loading(loadingText, 10);
   return Axios({ url, method: method || 'POST', data })
