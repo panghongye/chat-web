@@ -11,8 +11,6 @@ export default function Login() {
   const [password, passwordSet] = useState('');
   async function onClick() {
     if (!name || !password) return Toast.info('请输入账号和密码');
-    //DEV
-    // return user.login({name:'test'})
     try {
       const data: any = await axios(
         `/${type ? 'login' : 'register'}`,
