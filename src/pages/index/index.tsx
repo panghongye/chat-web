@@ -114,9 +114,8 @@ class Index extends React.Component {
       .then(group => {
         Toast.hide();
         console.log('创建成功', group);
-        //todo
-        history.reload()
         this.onClose('modal1')();
+        history.reload()
       })
       .catch(e => Toast.hide());
   };
